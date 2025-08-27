@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Ride - MC_Rides</title>
+    <style>
+        /* Reset some styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #111; /* Dark background */
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        header {
+            width: 100%;
+            padding: 20px;
+            background: #ffc107; /* Yellow header */
+            color: #111;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .container {
+            margin-top: 50px;
+            background-color: #222;
+            padding: 30px 40px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ffc107;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input[type="text"] {
+            padding: 12px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        input[type="submit"] {
+            padding: 12px;
+            background-color: #ffc107;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #111;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #e6b800;
+            transform: translateY(-2px);
+        }
+
+        .flash {
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .flash-success {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .flash-danger {
+            background-color: #f44336;
+            color: white;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 15px;
+            background: #000;
+            color: #ffc107;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>MC_Rides</header>
+
+    <div class="container">
+        <h2>Book a Ride</h2>
+
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash flash-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <input type="text" name="origin" placeholder="Enter origin" required>
+            <input type="text" name="destination" placeholder="Enter destination" required>
+            <input type="submit" value="Book Ride">
+        </form>
+    </div>
+
+    <footer>© 2025 MC_Rides. All Rights Reserved.</footer>
+</body>
+</html>
